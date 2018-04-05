@@ -27,6 +27,7 @@ function watchFiles() {
 	gulp.watch('src/sass/**/*.scss', gulp.series('styles'));
 	gulp.watch('src/js/**/*.js', gulp.series('lint'));
 	gulp.watch('src/index.html', gulp.series('copy-html'));
+    gulp.watch('src/img/*', gulp.series('copy-images'));
 	gulp.watch('./dist/index.html').on('change', browserSync.reload);
 	browserSync.init({
 		server: './dist'
