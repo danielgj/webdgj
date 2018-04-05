@@ -9,6 +9,7 @@ var jasmine = require('gulp-jasmine-phantom');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var babel = require('gulp-babel');
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('copy-html', copyHTML);
 gulp.task('copy-css', copyCSS);
@@ -26,13 +27,13 @@ gulp.task('dist', gulp.series('copy-html', 'copy-css', 'copy-images','styles','l
 function watchFiles() {
 	gulp.watch('src/sass/**/*.scss', gulp.series('styles'));
 	gulp.watch('src/js/**/*.js', gulp.series('lint'));
-	gulp.watch('src/index.html', gulp.series('copy-html'));
+	gulp.watch('src/**/*.html', gulp.series('copy-html'));
     gulp.watch('src/img/*', gulp.series('copy-images'));
-	gulp.watch('./dist/index.html').on('change', browserSync.reload);
+	gulp.watch('./dist/**/*.html').on('change', browserSync.reload);
 	browserSync.init({
 		server: './dist'
 	});
-};
+}
 
 function buildJS(done) {
 	gulp.src('src/js/vendor/*.js')
@@ -42,7 +43,7 @@ function buildJS(done) {
 		.pipe(concat('all.js'))
 		.pipe(gulp.dest('dist/js'));
     done();
-};
+}
 
 function scriptsDist(done) {
 	gulp.src('src/js/vendor/*.js')
@@ -58,25 +59,25 @@ function scriptsDist(done) {
         .pipe(sourcemaps.write())
 		.pipe(gulp.dest('dist/js'));
     done();
-};
+}
 
 function copyHTML(done) {
 	gulp.src('./src/*.html')
 		.pipe(gulp.dest('./dist'));
     done();
-};
+}
 
 function copyCSS(done) {
 	gulp.src('./src/css/**/*.css')
 		.pipe(gulp.dest('./dist/css'));
     done();
-};
+}
 
 function copyImages(done) {
 	gulp.src('src/img/*')
 		.pipe(gulp.dest('dist/img'));
     done();
-};
+}
 
 function buildSaas(done) {
 	gulp.src('src/sass/**/*.scss')
@@ -89,9 +90,9 @@ function buildSaas(done) {
 		.pipe(gulp.dest('dist/css'))
 		.pipe(browserSync.stream());
     done();
-};
+}
 
-function lintJS(done) {
+function lintJS() {
 	return gulp.src(['src/js/**/*.js'])
 		// eslint() attaches the lint output to the eslint property
 		// of the file object so it can be used by other modules.
@@ -101,9 +102,8 @@ function lintJS(done) {
 		.pipe(eslint.format())
 		// To have the process exit with an error code (1) on
 		// lint error, return the stream and pipe to failOnError last.
-		.pipe(eslint.failOnError());
-    done();
-};
+		.pipe(eslint.failOnError());    
+}
 
 function unitTesting(done) {
 	gulp.src('src/tests/spec/extraSpec.js')
@@ -112,4 +112,4 @@ function unitTesting(done) {
 			vendor: 'src/js/**/*.js'
 		}));
     done();
-};
+}
