@@ -17,7 +17,7 @@
     <![endif]-->
     
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
           <a class="navbar-brand" href="#">Daniel García Jones</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -38,18 +38,15 @@
         </nav>
     </header>
     
-    <div class="container-fluid">
+    <div class="container">
        
+       <div class="separator"/>
        
-        <div class="jumbotron">
+       <div class="jumbotron">
           <h1 class="display-4">¡Hola, mundo!</h1>
-          <p class="lead">Bienvenido a la página personal de Daniel García Jones, Arquitecto de Movilidad y Sr. Business Analyst en Unisys.</p>
-          <hr class="my-4">
-          <p>Esta web cumple una doble función: exponer al mundo mis datos de contacto y servirme de campo de pruebas para desarrollo web con tecnologías modernas.</p>
-          <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Aprende más</a>
-          </p>
-        </div>
+          <p class="lead">Bienvenido a la página personal de <span class="font-italic font-bold">Daniel García Jones</span>, Arquitecto de Movilidad y Sr. Business Analyst en Unisys.</p>
+          <p  class="lead">Esta web cumple una doble función: exponer al mundo mis datos de contacto y servirme de campo de pruebas para desarrollo web con tecnologías modernas. Además sirve de acceso a mi Blog personal.</p>
+       </div>
         
         <section>
             <div class="row">
@@ -74,15 +71,25 @@ Cras a massa in lorem elementum rutrum. Morbi bibendum sagittis ipsum, eget elei
         
     </div>
     
-    <footer  class="fixed-bottom">
-       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-           <a class="navbar-brand" href="#">
-            <img src="img/dgj.png" alt="Daniel Garcia Jones" title="Daniel Garcia Jones" class="rounded-circle footerImg"/>
-           </a>
-           <row>
-               <p class="footerCopy">&copy; 2018 Daniel García Jones</p>
-           </row>
-       </nav>
+    <footer class="fixed-bottom navbar bg-dark">
+        <img src="img/dgj.png" alt="Daniel Garcia Jones" title="Daniel Garcia Jones" class="rounded-circle footerImg"/>
+        <div class="row">
+                <div class="col"></div>
+        </div>        
+        <div class="row">
+            <div class="col">
+                <p class="footerCopy text-center">&copy; 2018 Daniel García Jones</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p class="text-right footerCopy">
+                    <img src="img/linkedin.png" alt="Perfil LinkedIn" title="Perfil LinkedIn" class="socialIcon"/>
+                    <img src="img/twitter.png" alt="Perfil Twitter" title="Perfil Twitter" class="socialIcon"/>
+                </p>
+            </div>
+        </div>
+       
     </footer>
 
     <script src="js/all.js"></script>

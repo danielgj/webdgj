@@ -1,18 +1,21 @@
 @import 'colors';
 
-.container-fluid {
-    margin-top: 16px;
+.separator {
+    display:block;
+    margin-top: 80px;
 }
 
 .footerImg {
     position: absolute;
     left: 20px;
     width: 120px;
-    top: -70px;
+    top: -80px;
+}
+.socialIcon {
+    width:32px;
 }
 
 .footerCopy {
-    color: #ffffff;
     vertical-align: middle;
-    margin-left: 120px;
+    color: #ffffff;
 }
