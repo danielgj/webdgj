@@ -1,0 +1,27 @@
+{
+  "name": "WebDGJ",
+  "version": "1.0.0",
+  "description": "Personal Home Page for Daniel Garcia Jones",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "danielgj@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "express": "^4.16.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^4.0.2",
+    "gulp-jasmine-phantom": "^3.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0"
+  }
+}
