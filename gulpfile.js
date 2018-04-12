@@ -22,7 +22,7 @@ gulp.task('watch', watchFiles);
 gulp.task('scripts-dist', scriptsDist);
 
 gulp.task('default', gulp.series('copy-html', 'copy-css', 'copy-images', 'styles', 'scripts', 'watch')); //'lint', 
-gulp.task('dist', gulp.series('copy-html', 'copy-css', 'copy-images','styles','lint','scripts-dist'));
+gulp.task('dist', gulp.series('copy-html', 'copy-css', 'copy-images','styles','scripts-dist')); //'lint',
 
 function watchFiles() {
 	gulp.watch('src/sass/**/*.scss', gulp.series('styles'));
@@ -48,14 +48,14 @@ function buildJS(done) {
 function scriptsDist(done) {
 	gulp.src('src/js/vendor/*.js')
         .pipe(sourcemaps.init())
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/js'));
 	gulp.src('src/js/**/dgj*.js')
         .pipe(sourcemaps.init())
         .pipe(babel())
 		.pipe(concat('all.js'))
-		.pipe(uglify())
+		//.pipe(uglify())
         .pipe(sourcemaps.write())
 		.pipe(gulp.dest('dist/js'));
     done();
