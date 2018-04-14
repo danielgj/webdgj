@@ -14,6 +14,7 @@ var sourcemaps = require('gulp-sourcemaps');
 gulp.task('copy-html', copyHTML);
 gulp.task('copy-css', copyCSS);
 gulp.task('copy-images', copyImages);
+gulp.task('copy-files', copyFiles);
 gulp.task('styles', buildSaas);
 gulp.task('lint', lintJS);
 gulp.task('scripts', buildJS);
@@ -21,8 +22,8 @@ gulp.task('test', unitTesting);
 gulp.task('watch', watchFiles);
 gulp.task('scripts-dist', scriptsDist);
 
-gulp.task('default', gulp.series('copy-html', 'copy-css', 'copy-images', 'styles', 'scripts', 'watch')); //'lint', 
-gulp.task('dist', gulp.series('copy-html', 'copy-css', 'copy-images','styles','scripts-dist')); //'lint',
+gulp.task('default', gulp.series('copy-html', 'copy-css', 'copy-images', 'copy-files', 'styles', 'scripts', 'watch')); //'lint', 
+gulp.task('dist', gulp.series('copy-html', 'copy-css', 'copy-images','copy-files', 'styles','scripts-dist')); //'lint',
 
 function watchFiles() {
 	gulp.watch('src/sass/**/*.scss', gulp.series('styles'));
@@ -48,14 +49,14 @@ function buildJS(done) {
 function scriptsDist(done) {
 	gulp.src('src/js/vendor/*.js')
         .pipe(sourcemaps.init())
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/js'));
 	gulp.src('src/js/**/dgj*.js')
         .pipe(sourcemaps.init())
         .pipe(babel())
 		.pipe(concat('all.js'))
-		//.pipe(uglify())
+		.pipe(uglify())
         .pipe(sourcemaps.write())
 		.pipe(gulp.dest('dist/js'));
     done();
@@ -76,6 +77,12 @@ function copyCSS(done) {
 function copyImages(done) {
 	gulp.src('src/img/*')
 		.pipe(gulp.dest('dist/img'));
+    done();
+}
+
+function copyFiles(done) {
+	gulp.src('src/files/*')
+		.pipe(gulp.dest('dist/files'));
     done();
 }
 
