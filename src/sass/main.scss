@@ -19,7 +19,7 @@
     width:32px;
 }
 
-.footerCopy {
+.footerCopy, footerContact {
     vertical-align: middle;
     color: #ffffff;
 }
@@ -34,4 +34,25 @@
 .btn-lab {
     position: absolute;
     bottom: 25px;
+}
+
+
+@media screen and (min-width: 320px) {
+    .footerImg, .footerCopy {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 480px) {
+    .footerImg , .footerCopy{
+        display: none;
+    }
+
+}
+
+@media screen and (min-width: 720px) {
+    .footerImg, .footerCopy {
+        display: inline;
+    }
+
 }
