@@ -24,6 +24,14 @@
     color: #ffffff;
 }
 
-.carouselImg {
-    height:250px;
+
+.lab-card {
+    min-height: 280px;    
+    display: block;
+    position: relative;
+}
+
+.btn-lab {
+    position: absolute;
+    bottom: 25px;
 }
