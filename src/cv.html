@@ -219,15 +219,8 @@
     <script src="js/all.js"></script>
     <script>
         $(".btn-toggle").click(function() {
-            var id = $(this).attr('id').substr(4);
-            $(".collapse").collapse("hide")
-            toggleSection(id);
-            
-        });
-        
-        function toggleSection(id) {
-            $("#" + id).collapse("show");
-        }
+            showCollapsibleByIdAndHideOthers($(this).attr('id').substr(4));            
+        });        
     </script>
 
     </body>

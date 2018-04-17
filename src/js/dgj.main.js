@@ -1,6 +1,5 @@
-(function() {
-
-	var foo = 1;
-	return foo;
-
-})();
+/* exported showCollapsibleByIdAndHideOthers */
+function showCollapsibleByIdAndHideOthers(id) {
+    $('.collapse').collapse('hide');            
+    $('#' + id).collapse('show');
+}
