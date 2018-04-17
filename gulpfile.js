@@ -8,6 +8,8 @@ var eslint = require('gulp-eslint');
 var jasmine = require('gulp-jasmine-phantom');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 var babel = require('gulp-babel');
 var sourcemaps = require('gulp-sourcemaps');
 
@@ -49,7 +51,6 @@ function buildJS(done) {
 function scriptsDist(done) {
 	gulp.src('src/js/vendor/*.js')
         .pipe(sourcemaps.init())
-        .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/js'));
 	gulp.src('src/js/**/dgj*.js')
@@ -57,6 +58,7 @@ function scriptsDist(done) {
         .pipe(babel())
 		.pipe(concat('all.js'))
 		.pipe(uglify())
+        .on('error', function (err) { console.log(err); })
         .pipe(sourcemaps.write())
 		.pipe(gulp.dest('dist/js'));
     done();
@@ -76,6 +78,10 @@ function copyCSS(done) {
 
 function copyImages(done) {
 	gulp.src('src/img/*')
+        .pipe(imagemin({
+            progressive: true,
+            use: [pngquant()]
+        }))
 		.pipe(gulp.dest('dist/img'));
     done();
 }
