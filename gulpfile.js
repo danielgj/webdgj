@@ -24,12 +24,12 @@ gulp.task('test', unitTesting);
 gulp.task('watch', watchFiles);
 gulp.task('scripts-dist', scriptsDist);
 
-gulp.task('default', gulp.series('copy-html', 'copy-css', 'copy-images', 'copy-files', 'styles', 'scripts', 'watch')); //'lint', 
-gulp.task('dist', gulp.series('copy-html', 'copy-css', 'copy-images','copy-files', 'styles','scripts-dist')); //'lint',
+gulp.task('default', gulp.series('copy-html', 'copy-css', 'copy-images', 'copy-files', 'styles', 'lint', 'scripts', 'watch')); 
+gulp.task('dist', gulp.series('copy-html', 'copy-css', 'copy-images','copy-files', 'styles', 'lint','scripts-dist')); 
 
 function watchFiles() {
 	gulp.watch('src/sass/**/*.scss', gulp.series('styles'));
-	gulp.watch('src/js/**/*.js', gulp.series('lint'));
+	gulp.watch('src/js/**/*.js', gulp.series('lint', 'scripts'));
 	gulp.watch('src/**/*.html', gulp.series('copy-html'));
     gulp.watch('src/img/*', gulp.series('copy-images'));
 	gulp.watch('./dist/**/*.html').on('change', browserSync.reload);
@@ -58,7 +58,6 @@ function scriptsDist(done) {
         .pipe(babel())
 		.pipe(concat('all.js'))
 		.pipe(uglify())
-        .on('error', function (err) { console.log(err); })
         .pipe(sourcemaps.write())
 		.pipe(gulp.dest('dist/js'));
     done();
@@ -106,7 +105,7 @@ function buildSaas(done) {
 }
 
 function lintJS() {
-	return gulp.src(['src/js/**/*.js'])
+	return gulp.src(['src/js/**/dgj*.js'])
 		// eslint() attaches the lint output to the eslint property
 		// of the file object so it can be used by other modules.
 		.pipe(eslint())
