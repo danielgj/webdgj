@@ -70,17 +70,17 @@
             
             <p>
                 
-              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#empleos" aria-expanded="false" aria-controls="empleos">
+              <button class="btn btn-primary btn-toggle" type="button" id="btn_empleos">
                 Empleos
               </button>
              
-             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#educacion" aria-expanded="false" aria-controls="educacion">
+             <button class="btn btn-primary btn-toggle" type="button" id="btn_educacion">
                 Educación
               </button>
-              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#certificaciones" aria-expanded="false" aria-controls="certificaciones">
+              <button class="btn btn-primary btn-toggle" type="button" id="btn_certificaciones">
                 Certificaciones
               </button>
-              <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#skills" aria-expanded="false" aria-controls="skills">
+              <button class="btn btn-primary btn-toggle" type="button" id="btn_skills">
                 Skills
               </button>
             </p>
@@ -217,6 +217,18 @@
     <script src="js/modernizr.js"></script>
     <script src="js/bootstrap.bundle.js"></script>
     <script src="js/all.js"></script>
+    <script>
+        $(".btn-toggle").click(function() {
+            var id = $(this).attr('id').substr(4);
+            $(".collapse").collapse("hide")
+            toggleSection(id);
+            
+        });
+        
+        function toggleSection(id) {
+            $("#" + id).collapse("show");
+        }
+    </script>
 
     </body>
 </html>
